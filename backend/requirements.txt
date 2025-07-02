@@ -2,3 +2,7 @@ fastapi
 uvicorn
 numpy
 psycopg2-binary
+python-jose
+passlib
+python-dotenv
+bcrypt
