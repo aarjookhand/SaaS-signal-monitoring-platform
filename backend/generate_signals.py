@@ -2,15 +2,7 @@ import numpy as np
 import psycopg2
 import random
 import json
-import os
-
-DB_CONFIG = {
-    'host': os.getenv("DB_HOST", "localhost"),
-    'port': os.getenv("DB_PORT", 5432),
-    'dbname': os.getenv("DB_NAME", "xpressure"),
-    'user': os.getenv("DB_USER", "admin"),
-    'password': os.getenv("DB_PASS", "password")
-}
+from core.db_connection import DB_CONFIG;
 
 def generate_signal():
     duration = round(random.uniform(1, 100), 2)
