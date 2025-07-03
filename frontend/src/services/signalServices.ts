@@ -56,3 +56,24 @@ export const getDominantInfo = async (id: number): Promise<DominantInfo> => {
   return response.data;
 };
 
+
+export const getSignalMeta = async (id: number): Promise<{
+    duration: number;
+    sampling_rate: number;
+    components: { freq: number; amp: number }[];
+  }> => {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.get(
+      `http://localhost:8000/signals`, 
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    const signal = response.data.find((s: any) => s.id === id); 
+    return signal;
+};
+

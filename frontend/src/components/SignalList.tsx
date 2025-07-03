@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchSignals, Signal } from "../services/signalServices";
+import "../styles/SignalList.css"
 
 interface SignalListProps {
   onSelect: (id: number) => void;
@@ -28,16 +29,16 @@ const SignalList: React.FC<SignalListProps> = ({ onSelect, onClick }) => {
   if (loading) return <p>Loading signals...</p>;
 
   return (
-    <div>
+    <div className="signal-list-container">
       <h2>Available Signals</h2>
-      <ul>
+      <ul className="signal-list">
         {signals.map((signal) => (
           <li key={signal.id}>
             <button onClick={() =>{
               onSelect(signal.id);
               onClick(signal.id);}}>
-              Signal #{signal.id} (Duration: {signal.duration}s)
-              No. of sine waves :{signal.components.length}
+              Signal #{signal.id} - Duration: {signal.duration} seconds <br/>
+              Components: {signal.components.length} sine wave{signal.components.length > 1 ? 's' : ''}
             </button>
           </li>
         ))}

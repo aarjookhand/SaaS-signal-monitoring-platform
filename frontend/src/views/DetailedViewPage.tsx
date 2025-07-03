@@ -1,9 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import SignalCard from '../components/SignalCard';
 import AnalysisInfo from '../components/AnalysisInfo';
+import ComponentSines from '../components/ComponentSines';
+import "../styles/DetailedViewPage.css"
 
 function DetailedViewPage() {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   
 
@@ -14,10 +17,16 @@ function DetailedViewPage() {
   }
   
   return (
-    <div>
+    <div className="signal-page">
+      <button className="back-button" onClick={() => navigate("/")}>
+        ← Go Back
+      </button>
+      <AnalysisInfo id={signalId} />
       <SignalCard id={signalId} />
-      <AnalysisInfo id={signalId}/>
+      <ComponentSines id={signalId} />
+      
     </div>
+
   );
 }
 
