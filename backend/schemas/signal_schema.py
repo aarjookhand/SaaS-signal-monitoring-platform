@@ -10,3 +10,7 @@ class SignalOut(BaseModel):
     duration: float
     sampling_rate: int
     components: List[SignalComponent]
+
+class SignalData(BaseModel):
+    id: int
+    values: List[float]
