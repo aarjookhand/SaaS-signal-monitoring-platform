@@ -1,0 +1,32 @@
+.signal-page {
+    padding: 2rem 1.5rem;
+    max-width: 2000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; 
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.back-button {
+    position: fixed;
+    align-self: flex-start;
+    background-color: #f0f0f0;
+    color: #123a5f;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+}
+
+.back-button:hover {
+    background-color: #e2e2e2;
+}
+
+
+.signal-card-container{
+    margin-top: 50px;
+}

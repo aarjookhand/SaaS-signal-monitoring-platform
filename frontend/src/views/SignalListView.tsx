@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignalList from '../components/SignalList';
+import "../styles/SignalPage.css"
 
 const SignalListView: React.FC = () => {
     const navigate = useNavigate();
@@ -22,12 +23,17 @@ const SignalListView: React.FC = () => {
   
 
   return (
-    <div>
-      <h1>Welcome to the Dashboard</h1>
-      <SignalList onSelect={setSelectedSignal} onClick={handleSignalClick}/>
-      <button onClick={logout}>Logout</button>
+    <div className="dashboard-container">     
+      <div className="dashboard-bar">
+        <h1 className='dashboard-title'>Welcome to the Dashboard</h1>
+        <div className="logout-bar">
+          <button onClick={logout}>Logout</button>
+        </div>       
+      </div> 
+      <SignalList onSelect={setSelectedSignal} onClick={handleSignalClick} />
     </div>
   );
+
 };
 
 export default SignalListView;

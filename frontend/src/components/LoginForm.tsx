@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { login } from '../services/authServices';
+import "../styles/LoginForm.css"
 
 interface LoginFormProps {
   onLoginSuccess: (access_token: string) => void;
@@ -50,7 +51,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
         </div>
 
         <button type="submit" disabled={loading}>
-            {loading ? 'Logging in...' : 'Login'}
+            {loading ? 'Logging in...' : 'LOGIN'}
         </button>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}

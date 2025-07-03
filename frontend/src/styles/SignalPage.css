@@ -1,0 +1,33 @@
+.dashboard-bar {
+  display: flex;
+  align-items: center;     
+  justify-content: space-between; 
+  padding: 1rem 1.5rem;  
+  background-color: white;  
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dashboard-title {
+  margin: 0;       
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  color: #123a5f;
+}
+
+.logout-bar button {
+  background-color: white;
+  color: #123a5f;
+  padding: 0.5rem 1rem;
+  font-weight: small;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-bar button:hover {
+  background-color: rgb(243, 242, 242);
+}
