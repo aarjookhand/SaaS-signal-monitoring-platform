@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from core.auth_core import get_current_user
-from services.signal_service import fetch_all_signals, fetch_signal_by_id
-from schemas.signal_schema import SignalOut, SignalData
+from services.signal_service import fetch_all_signals, fetch_signal_by_id, get_dominant_frequency
+from schemas.signal_schema import SignalOut, SignalData, DominantInfo
 from typing import List
 
 router = APIRouter()
@@ -16,3 +16,10 @@ def get_signal_by_id(signal_id: int, user: str = Depends(get_current_user)):
     if not signal:
         raise HTTPException(status_code=404, detail="Signal not found")
     return signal
+
+@router.get("/signals/{signal_id}/analysis", response_model=DominantInfo)
+def signal_dominant(signal_id: int, user: str = Depends(get_current_user)):
+    info = get_dominant_frequency(signal_id)
+    if not info:
+        raise HTTPException(status_code=404, detail="No dominant frequency found in range")
+    return info
