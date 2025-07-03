@@ -7,6 +7,11 @@ export interface Signal {
   components: Array<{ freq: number; amp: number }>;
 }
 
+export interface DominantInfo {
+  dominant_frequency: number;
+  amplitude: number;
+}
+
 export const fetchSignals = async (): Promise<Signal[]> => {
   const token = localStorage.getItem("token");
 
@@ -33,5 +38,21 @@ export const getSignalById = async (id: number): Promise<number[]> => {
   );
 
   return response.data.values;
+};
+
+
+export const getDominantInfo = async (id: number): Promise<DominantInfo> => {
+  const token = localStorage.getItem("token");
+
+  const response = await axios.get<DominantInfo>(
+    `http://localhost:8000/signals/${id}/analysis`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  return response.data;
 };
 

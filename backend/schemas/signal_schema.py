@@ -14,3 +14,7 @@ class SignalOut(BaseModel):
 class SignalData(BaseModel):
     id: int
     values: List[float]
+
+class DominantInfo(BaseModel):
+    dominant_frequency: float
+    amplitude: float
