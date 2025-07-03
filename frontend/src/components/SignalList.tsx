@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { fetchSignals, Signal } from "../services/mainServices";
+import { fetchSignals, Signal } from "../services/signalServices";
 
 interface SignalListProps {
   onSelect: (id: number) => void;
+  onClick: (id: number) => void;
 }
 
-const SignalList: React.FC<SignalListProps> = ({ onSelect }) => {
+const SignalList: React.FC<SignalListProps> = ({ onSelect, onClick }) => {
   const [signals, setSignals] = useState<Signal[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -32,7 +33,9 @@ const SignalList: React.FC<SignalListProps> = ({ onSelect }) => {
       <ul>
         {signals.map((signal) => (
           <li key={signal.id}>
-            <button onClick={() => onSelect(signal.id)}>
+            <button onClick={() =>{
+              onSelect(signal.id);
+              onClick(signal.id);}}>
               Signal #{signal.id} (Duration: {signal.duration}s)
               No. of sine waves :{signal.components.length}
             </button>

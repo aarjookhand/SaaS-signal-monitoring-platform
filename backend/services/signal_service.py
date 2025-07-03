@@ -1,5 +1,3 @@
-import psycopg2
-import os
 from typing import List, Dict
 from core.db_connection import get_db_conn
 
@@ -20,3 +18,20 @@ def fetch_all_signals() -> List[Dict]:
         }
         for row in rows
     ]
+
+
+def fetch_signal_by_id(signal_id: int) -> dict | None:
+    conn = get_db_conn()
+    cur = conn.cursor()
+    cur.execute("SELECT id, values FROM samples WHERE signal_id = %s", (signal_id,))
+    row = cur.fetchone()
+    cur.close()
+    conn.close()
+
+    if not row:
+        return None
+
+    return {
+        "id": row[0],
+        "values": row[1]
+    }
